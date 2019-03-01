@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import api from '../../api';
 
-import ChampCard from '../../components/ChampCard';
+import ChampCard from './ChampCard';
 
 class Champions extends Component {
   state = {
@@ -10,11 +10,15 @@ class Champions extends Component {
   };
 
   async componentDidMount() {
+    await this.getAllChampions();
+  }
+
+  getAllChampions = async () => {
     const { GET_ALL_CHAMPIONS } = api;
-    const { data } = await axios.get(GET_ALL_CHAMPIONS);
+    const { data } = await axios.get(GET_ALL_CHAMPIONS());
     const allChampions = Object.values(data.data).map(item => item);
     this.setState({ allChampions });
-  }
+  };
 
   render() {
     const { allChampions } = this.state;
