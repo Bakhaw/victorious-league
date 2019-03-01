@@ -1,0 +1,35 @@
+.ChampionDetail {
+  padding: 20px 0;
+  min-height: $Content__height;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  .ChampionDetail__Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    .ChampionDetail__Title {
+      margin: 0;
+      color: $GoldLight;
+      text-align: center;
+      font-size: 42px;
+      flex: 1;
+      &::after {
+        content: '';
+        flex: 1;
+      }
+    }
+  }
+  .ChampionDetail__Lore {
+    border-radius: 4px;
+    background: $BlueDark;
+    font-size: 18px;
+    color: $GoldDark;
+    text-align: left;
+    padding: 40px;
+    margin: 20px auto;
+    width: 60%;
+  }
+}
