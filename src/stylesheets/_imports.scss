@@ -1,7 +1,10 @@
 // ? Components
+@import '../components/Loader/styles';
 @import '../components/NavBar/styles';
+@import '../components/PrevButton/styles';
 
 // ? Screens
+@import '../screens/ChampionDetail/styles';
 @import '../screens/Champions/ChampCard/styles';
 @import '../screens/Champions/styles';
 @import '../screens/Home/styles';
