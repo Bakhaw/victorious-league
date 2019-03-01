@@ -4,7 +4,7 @@ import Logo from './Logo';
 
 const routes = [
   {
-    text: 'Home',
+    text: 'Accueil',
     to: '/'
   },
   {
