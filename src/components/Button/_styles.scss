@@ -11,9 +11,23 @@
   background-size: 200% 100% !important;
   background-position: right bottom !important;
   transition: all 0.35s ease !important;
+  @include xs {
+    font-size: 16px;
+    font-weight: normal;
+  }
+  @include sm {
+    font-size: 22px;
+    font-weight: normal;
+  }
   &:hover {
     font-size: 32px;
     transition: 1.5s;
     background-position: left bottom !important;
+    @include xs {
+      font-size: 18px;
+    }
+    @include sm {
+      font-size: 24px;
+    }
   }
 }

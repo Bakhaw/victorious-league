@@ -1,2 +1,4 @@
 $NavBar__height: 60px;
-$Content__height: calc(100vh - #{$NavBar__height});
+$Content__height: calc(
+  100vh - (#{$NavBar__height} + 20px)
+); // 20px for Navbar padding

@@ -1,11 +1,18 @@
 .NavBar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
   height: $NavBar__height;
+  @include xs {
+    padding: 0;
+  }
   .NavBar__logo {
     height: auto;
     width: 170px;
+    @include xs {
+      width: 90px;
+    }
   }
   ul {
     display: flex;
