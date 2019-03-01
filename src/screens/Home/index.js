@@ -1,33 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import api from '../../api';
-
-import ChampCard from '../../components/ChampCard';
+import Link from 'react-router-dom/Link';
 
 class Home extends Component {
-  state = {
-    allChampions: []
-  };
-
-  async componentDidMount() {
-    const { GET_ALL_CHAMPIONS } = api;
-    const { data } = await axios.get(GET_ALL_CHAMPIONS);
-    const allChampions = Object.values(data.data).map(item => item);
-    this.setState({ allChampions });
-  }
-
   render() {
-    const { allChampions } = this.state;
     return (
       <div className='Home'>
-        <ul>
-          {allChampions.length > 0 &&
-            allChampions.map(champ => (
-              <li key={champ.key}>
-                <ChampCard {...champ} />
-              </li>
-            ))}
-        </ul>
+        <Link to='/champions'>
+          <button>EXPLORER LES CHAMPIONS</button>
+        </Link>
       </div>
     );
   }
