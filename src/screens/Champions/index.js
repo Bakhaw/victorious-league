@@ -41,7 +41,7 @@ class Champions extends Component {
   };
 
   render() {
-    const { allChampions, displayedChampions, isLoading } = this.state;
+    const { displayedChampions, isLoading } = this.state;
 
     if (isLoading) return <Loader />;
 
