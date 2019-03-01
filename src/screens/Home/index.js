@@ -19,7 +19,7 @@ class Home extends Component {
   render() {
     const { allChampions } = this.state;
     return (
-      <div>
+      <div className='Home'>
         <ul>
           {allChampions.length > 0 &&
             allChampions.map(champ => (
