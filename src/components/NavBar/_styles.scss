@@ -1,0 +1,23 @@
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  .NavBar__logo {
+    height: auto;
+    width: 170px;
+  }
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .NavBar__NavLink {
+      color: red;
+      font-size: 20px;
+      color: $GoldLight;
+      margin: 0 30px;
+      &:hover {
+        color: $GoldDark;
+      }
+    }
+  }
+}
