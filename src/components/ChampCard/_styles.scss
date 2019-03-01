@@ -21,13 +21,19 @@
     border: 5px solid $GoldDark;
     margin-bottom: 10px;
   }
-  .ChampCard__Title {
-    color: $GoldLight;
-    font-weight: bold;
-    font-size: 25px;
-  }
-  .ChampCard__Subtitle {
-    color: $Grey;
-    font-size: 18px;
+  .ChampCard__Title__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .ChampCard__Title {
+      color: $GoldLight;
+      font-weight: bold;
+      font-size: 25px;
+    }
+    .ChampCard__Subtitle {
+      color: $Grey;
+      font-size: 18px;
+    }
   }
 }

@@ -2,11 +2,11 @@ import React from 'react';
 import Avatar from './Avatar';
 import Title from './Title';
 
-export default function ChampCard({ id, name, title }) {
+export default function ChampCard(props) {
   return (
     <div className='ChampCard'>
-      <Avatar id={id} />
-      <Title name={name} title={title} />
+      <Avatar {...props} />
+      <Title {...props} />
     </div>
   );
 }
