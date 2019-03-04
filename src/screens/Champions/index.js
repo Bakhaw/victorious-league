@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import api from '../../api';
 
-import ChampCard from './ChampCard';
+import DisplayedChampions from './DisplayedChampions';
+import Header from './Header';
 import Loader from '../../components/Loader';
 
 class Champions extends Component {
@@ -10,7 +11,8 @@ class Champions extends Component {
     isLoading: false,
     allChampions: [],
     displayedChampions: [],
-    searchInputValue: ''
+    searchInputValue: '',
+    selectedCheckboxes: []
   };
 
   async componentDidMount() {
@@ -29,46 +31,74 @@ class Champions extends Component {
   };
 
   handleSearchInputChange = e => {
+    const { allChampions } = this.state;
     const searchInputValue = e.target.value;
-    const displayedChampions = this.state.allChampions.filter(
+
+    const displayedChampions = allChampions.filter(
       champ =>
         champ.name.toLowerCase().indexOf(searchInputValue.toLowerCase()) !== -1
     );
+
     this.setState({
       displayedChampions,
       searchInputValue
     });
   };
 
+  handleSelectCheckbox = async e => {
+    const { selectedCheckboxes } = this.state;
+    const item = e.target.name;
+    const checkboxAlreadySelected = selectedCheckboxes.includes(item);
+
+    let newSelectedCheckboxes;
+
+    if (checkboxAlreadySelected) {
+      newSelectedCheckboxes = selectedCheckboxes.filter(name => name !== item);
+    } else {
+      newSelectedCheckboxes = [...selectedCheckboxes, item];
+    }
+
+    await this.setState({
+      selectedCheckboxes: newSelectedCheckboxes
+    });
+
+    this.filterDisplayedChampions();
+  };
+
+  filterDisplayedChampions = () => {
+    const { allChampions, selectedCheckboxes } = this.state;
+    let newDisplayedChampions = [];
+
+    allChampions.forEach(champion =>
+      champion.tags.forEach(tag => {
+        if (selectedCheckboxes.length === 0) {
+          newDisplayedChampions = allChampions;
+        }
+
+        if (
+          selectedCheckboxes.includes(tag) &&
+          !newDisplayedChampions.includes(champion)
+        )
+          newDisplayedChampions = [...newDisplayedChampions, champion];
+      })
+    );
+
+    this.setState({ displayedChampions: newDisplayedChampions });
+  };
+
   render() {
-    const { displayedChampions, isLoading } = this.state;
+    const { isLoading } = this.state;
 
     if (isLoading) return <Loader />;
 
     return (
       <div className='Champions'>
-        <div className='Champions__header'>
-          <h1>Champions</h1>
-          <input
-            onChange={this.handleSearchInputChange}
-            placeholder='Rechercher un champion...'
-            type='text'
-          />
-        </div>
-        {displayedChampions.length === 0 && (
-          <p className='Champions__no-data'>
-            Aucun champion ne correspond à votre recherche
-          </p>
-        )}
-        {displayedChampions.length > 0 && (
-          <ul>
-            {displayedChampions.map(champ => (
-              <li key={champ.key}>
-                <ChampCard {...champ} />
-              </li>
-            ))}
-          </ul>
-        )}
+        <Header
+          handleSearchInputChange={this.handleSearchInputChange}
+          handleSelectCheckbox={this.handleSelectCheckbox}
+          {...this.state}
+        />
+        <DisplayedChampions {...this.state} />
       </div>
     );
   }
