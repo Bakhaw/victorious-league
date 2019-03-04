@@ -1,0 +1,12 @@
+.Checkbox {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  input {
+    cursor: pointer;
+    padding: 10px;
+  }
+  span {
+    color: $White;
+  }
+}
