@@ -10,14 +10,27 @@
     align-items: center;
     padding: 0 20px;
     .ChampionDetail__Title {
-      margin: 0;
-      color: $GoldLight;
+      display: flex;
+      flex-direction: column;
       text-align: center;
-      font-size: 42px;
       flex: 1;
       &::after {
         content: '';
         flex: 1;
+      }
+      h1 {
+        color: $GoldLight;
+        font-size: 42px;
+        margin: 0;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+        li {
+          color: $Grey;
+          font-size: 18px;
+        }
       }
     }
   }

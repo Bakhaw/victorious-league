@@ -17,18 +17,27 @@
       }
     }
     .Champions__header__filters {
-      width: 600px;
+      width: 50vw;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      @include xs {
+        width: 80vw;
+      }
+      @include sm {
+        width: 80vw;
+      }
       ul {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: wrap;
         width: 100%;
         margin: 25px 0;
+        li {
+          width: 100px;
+        }
       }
     }
   }

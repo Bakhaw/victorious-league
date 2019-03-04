@@ -24,10 +24,15 @@ class Champions extends Component {
   getAllChampions = async () => {
     await this.toggleLoading(true);
     const { GET_ALL_CHAMPIONS } = api;
-    const { data } = await axios.get(GET_ALL_CHAMPIONS());
-    const allChampions = Object.values(data.data).map(item => item);
-    await this.setState({ allChampions, displayedChampions: allChampions });
-    await this.toggleLoading(false);
+
+    try {
+      const { data } = await axios.get(GET_ALL_CHAMPIONS());
+      const allChampions = Object.values(data.data).map(item => item);
+      await this.setState({ allChampions, displayedChampions: allChampions });
+      await this.toggleLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   handleSearchInputChange = e => {

@@ -31,10 +31,15 @@ class ChampionDetail extends Component {
     await this.toggleLoading(true);
     const { championName } = this.props.match.params;
     const { GET_CHAMPION_DETAIL } = api;
-    const { data } = await axios.get(GET_CHAMPION_DETAIL(championName));
-    const championDetail = data.data[championName];
-    await this.setState({ championDetail });
-    await this.toggleLoading(false);
+
+    try {
+      const { data } = await axios.get(GET_CHAMPION_DETAIL(championName));
+      const championDetail = data.data[championName];
+      await this.setState({ championDetail });
+      await this.toggleLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   render() {
