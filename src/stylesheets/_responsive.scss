@@ -22,7 +22,7 @@ $screen-xlg-min: 1500px;
 }
 
 @mixin lg {
-  @media (min-width: calc(#{$screen-md-min} + 1px) and (max-width: #{$screen-xlg-min})) {
+  @media (min-width: calc(#{$screen-md-min} + 1px)) and (max-width: #{$screen-xlg-min}) {
     @content;
   }
 }
